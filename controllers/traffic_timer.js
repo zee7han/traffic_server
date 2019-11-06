@@ -56,7 +56,7 @@ const updateSignalTimer = (req, res) => {
             traffic_signal_name: req.body.traffic_signal_name
         }, {
             $set: {
-                duration: req.body.duration
+                duration: parseInt(req.body.duration)
             }
         }).then((result) => {
             return res.json({
