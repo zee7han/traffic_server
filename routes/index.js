@@ -2,8 +2,8 @@ const express = require('express')
 let router = express.Router()
 const controllers = require('../controllers/traffic_timer');
 
-router.get('/',controllers.getAllSignalsTimers)
-router.post('/',controllers.createNewSignal)
-router.put('/',controllers.updateSignalTimer)
+router.get('/timer',controllers.getAllSignalsTimers)
+router.post('/timer',controllers.createNewSignal)
+router.put('/timer',controllers.updateSignalTimer)
 
 module.exports = router
