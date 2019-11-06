@@ -1,0 +1,17 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "A server for the traffic signal timers.",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Mohammad Zeeshan",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.7.8",
+    "morgan": "^1.9.1",
+    "validator": "^12.0.0"
+  }
+}
