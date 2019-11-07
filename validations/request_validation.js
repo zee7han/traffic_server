@@ -16,14 +16,14 @@ module.exports = (req) => {
     } else {
         errors.duration = "Missing body param named duration."
     }
-    if (Object.keys(req.headers).includes('Client-Os')) {
-        if (validator.isEmpty(req.headers['Client-Os'])) {
+    if (Object.keys(req.headers).includes('client-os')) {
+        if (validator.isEmpty(req.headers['client-os'])) {
             errors.client_os = "Not allowed empty value for the header."
-        } else if (req.headers['Client-Os'] === "Traffic-Client") {
-            errors.client_os = "Passing the wrong Client-Os."
+        } else if (req.headers['client-os'] !== "Traffic-Client") {
+            errors.client_os = "Passing the wrong client-os."
         }
     } else {
-        errors.client_os = "Please pass the default header Client-Os to fulfill your request."
+        errors.client_os = "Please pass the default header client-os to fulfill your request."
     }
 
     return errors;
