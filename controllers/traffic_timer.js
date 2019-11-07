@@ -18,7 +18,7 @@ const getAllSignalsTimers = (req, res) => {
 }
 
 const createNewSignal = (req, res) => {
-    const errors = request_validator(req.body);
+    const errors = request_validator(req);
 
     if (Object.keys(errors).length === 0) {
         const traffic_signal_name = req.body.traffic_signal_name.toLowerCase()
@@ -49,7 +49,7 @@ const createNewSignal = (req, res) => {
 }
 
 const updateSignalTimer = (req, res) => {
-    const errors = request_validator(req.body);
+    const errors = request_validator(req);
 
     if (Object.keys(errors).length === 0) {
         TrafficTimer.update({
