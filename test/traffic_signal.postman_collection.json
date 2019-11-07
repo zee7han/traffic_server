@@ -1,0 +1,997 @@
+{
+	"info": {
+		"_postman_id": "226a6cc0-6e5d-494b-9c50-e8b1932130e0",
+		"name": "traffic_signal",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "create signal",
+			"item": [
+				{
+					"name": "positive scenario",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "1a290ef7-8c4e-4838-86ff-928eb5e9e17a",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"",
+									"pm.test(\"Check for response time less than two second.\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(2000);",
+									"});",
+									"",
+									"pm.test(\"Status code is 200.\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Check for the message\", function () {",
+									"    pm.expect(jsonData.message.length).to.be.above(0);",
+									"});",
+									"",
+									"pm.test(\"Check for the desired properties.\", function () {",
+									"    pm.expect(jsonData).to.have.property(\"message\");",
+									"    pm.expect(jsonData).to.have.property(\"status_code\");",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Client-Os",
+								"value": "Traffic-Client",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"traffic_signal_name\": \"yellow\",\n\t\"duration\": \"1000\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://stark-anchorage-94734.herokuapp.com/timer",
+							"protocol": "https",
+							"host": [
+								"stark-anchorage-94734",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"timer"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "https://stark-anchorage-94734.herokuapp.com/timer",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Client-Os",
+										"value": "Traffic-Client",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"traffic_signal_name\": \"yellow\",\n\t\"duration\": \"1500\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://stark-anchorage-94734.herokuapp.com/timer",
+									"protocol": "https",
+									"host": [
+										"stark-anchorage-94734",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"timer"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "Cowboy"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Content-Type, Accept Client-Os"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "PUT, POST, GET, DELETE, OPTIONS"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "59"
+								},
+								{
+									"key": "Etag",
+									"value": "W/\"3b-Kz1u3CrqWR2MFAIoquyrxA/d+9s\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 07 Nov 2019 18:46:33 GMT"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 vegur"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Add new signal successfully\",\n    \"status_code\": 201\n}"
+						}
+					]
+				},
+				{
+					"name": "Missing header",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d349a7eb-41af-4959-9410-68a75ba4b142",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"",
+									"pm.test(\"Check for response time less than two second.\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(2000);",
+									"});",
+									"",
+									"pm.test(\"Status code is 200.\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Check for the message\", function () {",
+									"    pm.expect(jsonData.message.length).to.be.above(0);",
+									"});",
+									"",
+									"pm.test(\"Check for the desired properties.\", function () {",
+									"    pm.expect(jsonData).to.have.property(\"message\");",
+									"    pm.expect(jsonData).to.have.property(\"status_code\");",
+									"    pm.expect(jsonData).to.have.property(\"errors\");",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Client-Os",
+								"type": "text",
+								"value": "Traffic-Client",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"traffic_signal_name\": \"yellow\",\n\t\"duration\": \"500\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://stark-anchorage-94734.herokuapp.com/timer",
+							"protocol": "https",
+							"host": [
+								"stark-anchorage-94734",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"timer"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Missing header",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Client-Os",
+										"type": "text",
+										"value": "Traffic-Client",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"traffic_signal_name\": \"yellow\",\n\t\"duration\": \"500\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://stark-anchorage-94734.herokuapp.com/timer",
+									"protocol": "https",
+									"host": [
+										"stark-anchorage-94734",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"timer"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "Cowboy"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Content-Type, Accept Client-Os"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "PUT, POST, GET, DELETE, OPTIONS"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "134"
+								},
+								{
+									"key": "Etag",
+									"value": "W/\"86-wT/TF508kQ9Nzoy4NqUsAKorrBI\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 07 Nov 2019 18:48:01 GMT"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 vegur"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Bad Request\",\n    \"status_code\": 400,\n    \"errors\": {\n        \"client_os\": \"Please pass the default header client-os to fulfill your request.\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Add duplicate signal",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "6433600f-5427-4bda-b13d-24d81331653b",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"",
+									"pm.test(\"Check for response time less than two second.\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(2000);",
+									"});",
+									"",
+									"pm.test(\"Status code is 200.\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Check for the message\", function () {",
+									"    pm.expect(jsonData.message.length).to.be.above(0);",
+									"});",
+									"",
+									"pm.test(\"Check for the desired properties.\", function () {",
+									"    pm.expect(jsonData).to.have.property(\"message\");",
+									"    pm.expect(jsonData).to.have.property(\"status_code\");",
+									"    pm.expect(jsonData).to.have.property(\"error\");",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Client-Os",
+								"value": "Traffic-Client",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"traffic_signal_name\": \"green\",\n\t\"duration\": \"3500\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://stark-anchorage-94734.herokuapp.com/timer",
+							"protocol": "https",
+							"host": [
+								"stark-anchorage-94734",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"timer"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Add duplicate signal",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Client-Os",
+										"value": "Traffic-Client",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"traffic_signal_name\": \"green\",\n\t\"duration\": \"3500\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://stark-anchorage-94734.herokuapp.com/timer",
+									"protocol": "https",
+									"host": [
+										"stark-anchorage-94734",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"timer"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "Cowboy"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Content-Type, Accept Client-Os"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "PUT, POST, GET, DELETE, OPTIONS"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "258"
+								},
+								{
+									"key": "Etag",
+									"value": "W/\"102-QZejpuc+sTQDsk2sixq0JEa3s2k\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 07 Nov 2019 18:52:51 GMT"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 vegur"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Error while creating the new signal.\",\n    \"status_code\": 400,\n    \"error\": {\n        \"driver\": true,\n        \"name\": \"MongoError\",\n        \"index\": 0,\n        \"code\": 11000,\n        \"errmsg\": \"E11000 duplicate key error index: heroku_bsmlxvgl.traffictimers.$traffic_signal_name_1 dup key: { : \\\"green\\\" }\"\n    }\n}"
+						}
+					]
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "update signal",
+			"item": [
+				{
+					"name": "positive scenario",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "16ba1e6c-d694-49b3-a897-fac130f5fbeb",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"",
+									"pm.test(\"Check for response time less than two second.\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(2000);",
+									"});",
+									"",
+									"pm.test(\"Status code is 200.\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Check for the message\", function () {",
+									"    pm.expect(jsonData.message.length).to.be.above(0);",
+									"});",
+									"",
+									"pm.test(\"Check for the desired properties.\", function () {",
+									"    pm.expect(jsonData).to.have.property(\"message\");",
+									"    pm.expect(jsonData).to.have.property(\"status_code\");",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Client-Os",
+								"value": "Traffic-Client",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"traffic_signal_name\": \"green\",\n\t\"duration\": \"5000\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://stark-anchorage-94734.herokuapp.com/timer",
+							"protocol": "https",
+							"host": [
+								"stark-anchorage-94734",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"timer"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "https://stark-anchorage-94734.herokuapp.com/timer",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Client-Os",
+										"value": "Traffic-Client",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"traffic_signal_name\": \"green\",\n\t\"duration\": \"5000\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://stark-anchorage-94734.herokuapp.com/timer",
+									"protocol": "https",
+									"host": [
+										"stark-anchorage-94734",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"timer"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "Cowboy"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Content-Type, Accept Client-Os"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "PUT, POST, GET, DELETE, OPTIONS"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "78"
+								},
+								{
+									"key": "Etag",
+									"value": "W/\"4e-C5PE9Gfk5g8iiutCweTg21AxXA0\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 07 Nov 2019 18:44:21 GMT"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 vegur"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Update the signal timer duration successfully.\",\n    \"status_code\": 200\n}"
+						}
+					]
+				},
+				{
+					"name": "missing header",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "963ac8ee-845c-466d-99d7-3016304c9962",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"",
+									"pm.test(\"Check for response time less than two second.\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(2000);",
+									"});",
+									"",
+									"pm.test(\"Status code is 200.\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Check for the message\", function () {",
+									"    pm.expect(jsonData.message.length).to.be.above(0);",
+									"});",
+									"",
+									"pm.test(\"Check for the desired properties.\", function () {",
+									"    pm.expect(jsonData).to.have.property(\"message\");",
+									"    pm.expect(jsonData).to.have.property(\"status_code\");",
+									"    pm.expect(jsonData).to.have.property(\"errors\");",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Client-Os",
+								"value": "Traffic-Client",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"traffic_signal_name\": \"green\",\n\t\"duration\": \"5000\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://stark-anchorage-94734.herokuapp.com/timer",
+							"protocol": "https",
+							"host": [
+								"stark-anchorage-94734",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"timer"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "https://stark-anchorage-94734.herokuapp.com/timer",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Client-Os",
+										"value": "Traffic-Client",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"traffic_signal_name\": \"green\",\n\t\"duration\": \"5000\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://stark-anchorage-94734.herokuapp.com/timer",
+									"protocol": "https",
+									"host": [
+										"stark-anchorage-94734",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"timer"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "Cowboy"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Content-Type, Accept Client-Os"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "PUT, POST, GET, DELETE, OPTIONS"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "78"
+								},
+								{
+									"key": "Etag",
+									"value": "W/\"4e-C5PE9Gfk5g8iiutCweTg21AxXA0\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 07 Nov 2019 18:44:21 GMT"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 vegur"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Update the signal timer duration successfully.\",\n    \"status_code\": 200\n}"
+						}
+					]
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "get all signal",
+			"item": [
+				{
+					"name": "https://stark-anchorage-94734.herokuapp.com/timer",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d86c2ab5-0328-4d29-8a66-d2991ddd525c",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"",
+									"pm.test(\"Check for response time less than two second.\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(2000);",
+									"});",
+									"",
+									"pm.test(\"Status code is 200.\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Check for the result length.\", function () {",
+									"    pm.expect(jsonData.result.length).to.be.above(0);",
+									"})",
+									"",
+									"pm.test(\"Check for result object contains all the property.\", function(){",
+									"    pm.expect(jsonData.result[0]).to.have.property(\"traffic_signal_name\")",
+									"    pm.expect(jsonData.result[0]).to.have.property(\"duration\")",
+									"    pm.expect(jsonData.result[0]).to.have.property(\"created_at\")",
+									"    pm.expect(jsonData.result[0]).to.have.property(\"updated_at\")",
+									"    pm.expect(jsonData.result[0]).to.have.property(\"_id\")",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Client-Os",
+								"value": "Traffic-Client",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://stark-anchorage-94734.herokuapp.com/timer",
+							"protocol": "https",
+							"host": [
+								"stark-anchorage-94734",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"timer"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "https://stark-anchorage-94734.herokuapp.com/timer",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Client-Os",
+										"value": "Traffic-Client",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://stark-anchorage-94734.herokuapp.com/timer",
+									"protocol": "https",
+									"host": [
+										"stark-anchorage-94734",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"timer"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "Cowboy"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Content-Type, Accept Client-Os"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "PUT, POST, GET, DELETE, OPTIONS"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "587"
+								},
+								{
+									"key": "Etag",
+									"value": "W/\"24b-HohgF2drNf6wmFb7DptU7Dy97D8\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 07 Nov 2019 17:51:12 GMT"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 vegur"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Get All the Signals timer successfully.\",\n    \"status_code\": 200,\n    \"result\": [\n        {\n            \"_id\": \"5dc458dc7388e400047e0265\",\n            \"traffic_signal_name\": \"green\",\n            \"duration\": 2000,\n            \"created_at\": \"2019-11-07T17:48:12.559Z\",\n            \"updated_at\": \"2019-11-07T17:48:12.560Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"5dc458ea7388e400047e0266\",\n            \"traffic_signal_name\": \"red\",\n            \"duration\": 1000,\n            \"created_at\": \"2019-11-07T17:48:26.940Z\",\n            \"updated_at\": \"2019-11-07T17:48:26.940Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"5dc458f57388e400047e0267\",\n            \"traffic_signal_name\": \"yellow\",\n            \"duration\": 500,\n            \"created_at\": \"2019-11-07T17:48:37.883Z\",\n            \"updated_at\": \"2019-11-07T17:48:37.883Z\",\n            \"__v\": 0\n        }\n    ]\n}"
+						}
+					]
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

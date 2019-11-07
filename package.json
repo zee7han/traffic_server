@@ -4,7 +4,8 @@
   "description": "A server for the traffic signal timers.",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "start": "node index.js",
+    "test": "newman run ./test/traffic_signal.postman_collection.json"
   },
   "author": "Mohammad Zeeshan",
   "license": "ISC",
